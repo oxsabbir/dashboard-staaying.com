@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_shared_perks_lists",
+  "info": {
+    "displayName": "PerksList",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "Perks": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,111 @@
+{
+  "kind": "collectionType",
+  "collectionName": "properties",
+  "info": {
+    "singularName": "property",
+    "pluralName": "properties",
+    "displayName": "Property"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "default": "Four Seasons Hotel Riyadh at Kingdom Centre",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "default": "Experience unparalleled luxury and panoramic city views from the iconic Kingdom Centre. This hotel offers world-class service, refined interiors, and an exclusive stay in the heart of Riyadh.",
+      "required": true
+    },
+    "address": {
+      "type": "string",
+      "default": "Al Olaya, Riyadh, Tabuk, Saudi Arabia",
+      "required": true
+    },
+    "highlightMesssage": {
+      "type": "string",
+      "default": "Excellent location — A popular superb choice in Al Olaya, Riyadh.",
+      "required": false
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "propertyDetails": {
+      "type": "richtext",
+      "required": true
+    },
+    "area": {
+      "type": "string",
+      "default": "Al Olaya, Riyadh",
+      "required": true
+    },
+    "distance": {
+      "type": "string",
+      "default": "1.5 km from downtown"
+    },
+    "Rating": {
+      "type": "decimal",
+      "required": true,
+      "default": 9.2
+    },
+    "ratingLabel": {
+      "type": "string",
+      "default": "Superb",
+      "required": true
+    },
+    "totalReview": {
+      "type": "integer",
+      "default": 2109
+    },
+    "locationScore": {
+      "type": "decimal",
+      "required": true,
+      "default": 9.5
+    },
+    "propertyType": {
+      "type": "string",
+      "default": "Premium King Room",
+      "required": true
+    },
+    "dealType": {
+      "type": "string",
+      "default": "Top choice",
+      "required": false
+    },
+    "price": {
+      "type": "integer",
+      "required": true,
+      "default": 2300
+    },
+    "discountPrice": {
+      "type": "integer"
+    },
+    "mapUrl": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
