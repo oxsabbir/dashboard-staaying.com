@@ -14,11 +14,11 @@ export interface SharedMedia extends Struct.ComponentSchema {
 export interface SharedPerksList extends Struct.ComponentSchema {
   collectionName: 'components_shared_perks_lists';
   info: {
-    displayName: 'PerksList';
+    displayName: 'TextList';
     icon: 'bulletList';
   };
   attributes: {
-    Perks: Schema.Attribute.String;
+    item: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 

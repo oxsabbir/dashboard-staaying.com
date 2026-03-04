@@ -31,15 +31,11 @@
       "default": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115942.82518364632!2d46.626978!3d24.713552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f02d8a7b7cdbb%3A0x6e3f8f6b1f2a8d9e!2sRiyadh!5e0!3m2!1sen!2ssa!4v1700000000004",
       "required": true
     },
-    "coverImage": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+    "properties": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::property.property",
+      "mappedBy": "city"
     }
   }
 }

@@ -57,10 +57,11 @@
       "type": "richtext",
       "required": true
     },
-    "area": {
-      "type": "string",
-      "default": "Al Olaya, Riyadh",
-      "required": true
+    "city": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::city.city",
+      "inversedBy": "properties"
     },
     "distance": {
       "type": "string",
@@ -93,7 +94,7 @@
     "dealType": {
       "type": "string",
       "default": "Top choice",
-      "required": false
+      "required": true
     },
     "price": {
       "type": "integer",
@@ -106,6 +107,26 @@
     "mapUrl": {
       "type": "string",
       "required": true
+    },
+    "bestFor": {
+      "type": "component",
+      "component": "shared.perks-list",
+      "repeatable": true
+    },
+    "breakfast": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "specialPerks": {
+      "type": "component",
+      "component": "shared.perks-list",
+      "repeatable": true
+    },
+    "finePrints": {
+      "type": "component",
+      "component": "shared.perks-list",
+      "repeatable": true
     }
   }
 }

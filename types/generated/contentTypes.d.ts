@@ -577,9 +577,6 @@ export interface ApiCityCity extends Struct.CollectionTypeSchema {
     country: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Saudi Arebia'>;
-    coverImage: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -592,6 +589,10 @@ export interface ApiCityCity extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Riyadh'>;
+    properties: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::property.property'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     region: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -648,9 +649,11 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     address: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Al Olaya, Riyadh, Tabuk, Saudi Arabia'>;
-    area: Schema.Attribute.String &
+    bestFor: Schema.Attribute.Component<'shared.perks-list', true>;
+    breakfast: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'Al Olaya, Riyadh'>;
+      Schema.Attribute.DefaultTo<true>;
+    city: Schema.Attribute.Relation<'manyToOne', 'api::city.city'>;
     coverImage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     > &
@@ -659,6 +662,7 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     dealType: Schema.Attribute.String &
+      Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Top choice'>;
     description: Schema.Attribute.Text &
       Schema.Attribute.Required &
@@ -666,6 +670,7 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     discountPrice: Schema.Attribute.Integer;
     distance: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'1.5 km from downtown'>;
+    finePrints: Schema.Attribute.Component<'shared.perks-list', true>;
     highlightMesssage: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Excellent location \u2014 A popular superb choice in Al Olaya, Riyadh.'>;
     images: Schema.Attribute.Media<
@@ -700,6 +705,7 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     ratingLabel: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Superb'>;
+    specialPerks: Schema.Attribute.Component<'shared.perks-list', true>;
     totalReview: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<2109>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

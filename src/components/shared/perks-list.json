@@ -1,13 +1,14 @@
 {
   "collectionName": "components_shared_perks_lists",
   "info": {
-    "displayName": "PerksList",
+    "displayName": "TextList",
     "icon": "bulletList"
   },
   "options": {},
   "attributes": {
-    "Perks": {
-      "type": "string"
+    "item": {
+      "type": "string",
+      "required": true
     }
   },
   "config": {}
