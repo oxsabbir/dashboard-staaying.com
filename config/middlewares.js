@@ -10,6 +10,12 @@ module.exports = [
           "connect-src": ["'self'", "https:"],
           "img-src": ["'self'", "data:", "blob:", "ik.imagekit.io"],
           "media-src": ["'self'", "data:", "blob:", "ik.imagekit.io"],
+          "frame-src": [
+            "'self'",
+            "https://imagekit.io",
+            "https://ik.imagekit.io",
+            "eml.imagekit.io",
+          ],
           upgradeInsecureRequests: null,
         },
       },

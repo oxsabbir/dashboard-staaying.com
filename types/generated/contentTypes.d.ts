@@ -430,35 +430,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiAboutAbout extends Struct.SingleTypeSchema {
-  collectionName: 'abouts';
-  info: {
-    description: 'Write about yourself and the content you create';
-    displayName: 'About';
-    pluralName: 'abouts';
-    singularName: 'about';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    blocks: Schema.Attribute.DynamicZone<
-      ['shared.media', 'shared.quote', 'shared.rich-text', 'shared.slider']
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'> &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiCityCity extends Struct.CollectionTypeSchema {
   collectionName: 'cities';
   info: {
@@ -497,6 +468,7 @@ export interface ApiCityCity extends Struct.CollectionTypeSchema {
     region: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Riyadh Province'>;
+    slug: Schema.Attribute.UID<'name'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -535,6 +507,47 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
+  collectionName: 'landing_pages';
+  info: {
+    displayName: 'Landing Page';
+    pluralName: 'landing-pages';
+    singularName: 'landing-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    featuredCity: Schema.Attribute.Relation<'oneToMany', 'api::city.city'>;
+    homeGuest: Schema.Attribute.Relation<'oneToOne', 'api::property.property'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::landing-page.landing-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    recommendedProperty: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::property.property'
+    >;
+    uniqueProperty: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::property.property'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    weekendDeals: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::property.property'
+    >;
+  };
+}
+
 export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
   collectionName: 'properties';
   info: {
@@ -567,7 +580,6 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     description: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Experience unparalleled luxury and panoramic city views from the iconic Kingdom Centre. This hotel offers world-class service, refined interiors, and an exclusive stay in the heart of Riyadh.'>;
-    discountPrice: Schema.Attribute.Integer;
     distance: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'1.5 km from downtown'>;
     finePrints: Schema.Attribute.Component<'shared.perks-list', true>;
@@ -587,10 +599,11 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     locationScore: Schema.Attribute.Decimal &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<9.5>;
-    mapUrl: Schema.Attribute.String & Schema.Attribute.Required;
+    mapAddress: Schema.Attribute.String & Schema.Attribute.Required;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Four Seasons Hotel Riyadh at Kingdom Centre'>;
+    oldPrice: Schema.Attribute.Integer;
     price: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<2300>;
@@ -605,6 +618,7 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     ratingLabel: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Superb'>;
+    slug: Schema.Attribute.UID<'name'>;
     specialPerks: Schema.Attribute.Component<'shared.perks-list', true>;
     totalReview: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<2109>;
     updatedAt: Schema.Attribute.DateTime;
@@ -1124,9 +1138,9 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::about.about': ApiAboutAbout;
       'api::city.city': ApiCityCity;
       'api::global.global': ApiGlobalGlobal;
+      'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::property.property': ApiPropertyProperty;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

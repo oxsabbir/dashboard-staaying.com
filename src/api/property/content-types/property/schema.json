@@ -16,6 +16,10 @@
       "default": "Four Seasons Hotel Riyadh at Kingdom Centre",
       "required": true
     },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
     "description": {
       "type": "text",
       "default": "Experience unparalleled luxury and panoramic city views from the iconic Kingdom Centre. This hotel offers world-class service, refined interiors, and an exclusive stay in the heart of Riyadh.",
@@ -101,10 +105,10 @@
       "required": true,
       "default": 2300
     },
-    "discountPrice": {
+    "oldPrice": {
       "type": "integer"
     },
-    "mapUrl": {
+    "mapAddress": {
       "type": "string",
       "required": true
     },
