@@ -36,6 +36,17 @@
       "relation": "oneToMany",
       "target": "api::property.property",
       "mappedBy": "city"
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }
