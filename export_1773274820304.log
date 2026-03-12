@@ -1,0 +1,2 @@
+[2026-03-12 06:20:20.314] error: [FATAL] [Data transfer] Error in assets read stream: ENOENT: no such file or directory, stat '/home/oxsabbir/project-disk/project/dashboard-staaying.com/public/https:/ik.imagekit.io/rfr8iporg/strapi-uploads/jeddah_16032ca522.jpg?updatedAt=1773211294124'
+[2026-03-12 06:20:20.316] error: [ERROR] ENOENT: no such file or directory, stat '/home/oxsabbir/project-disk/project/dashboard-staaying.com/public/https:/ik.imagekit.io/rfr8iporg/strapi-uploads/jeddah_16032ca522.jpg?updatedAt=1773211294124'

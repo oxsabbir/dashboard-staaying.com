@@ -522,7 +522,7 @@ export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     featuredCity: Schema.Attribute.Relation<'oneToMany', 'api::city.city'>;
-    homeGuest: Schema.Attribute.Relation<'oneToOne', 'api::property.property'>;
+    homeGuest: Schema.Attribute.Relation<'oneToMany', 'api::property.property'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

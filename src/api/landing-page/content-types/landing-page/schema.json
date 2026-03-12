@@ -33,7 +33,7 @@
     },
     "homeGuest": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::property.property"
     }
   }
