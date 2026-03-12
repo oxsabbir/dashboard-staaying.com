@@ -2,6 +2,19 @@ module.exports = [
   "strapi::logger",
   "strapi::errors",
   {
+    name: "strapi::cors",
+    config: {
+      origin: [
+        "https://staaying.com",
+        "https://www.staaying.com",
+        "http://localhost:3000",
+      ],
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+      headers: ["Content-Type", "Authorization"],
+      keepHeaderOnError: true,
+    },
+  },
+  {
     name: "strapi::security",
     config: {
       contentSecurityPolicy: {
@@ -21,7 +34,6 @@ module.exports = [
       },
     },
   },
-  "strapi::cors",
   "strapi::poweredBy",
   "strapi::query",
   {
