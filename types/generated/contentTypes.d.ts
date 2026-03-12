@@ -468,7 +468,7 @@ export interface ApiCityCity extends Struct.CollectionTypeSchema {
     region: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Riyadh Province'>;
-    slug: Schema.Attribute.UID<'name'>;
+    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -618,7 +618,7 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     ratingLabel: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Superb'>;
-    slug: Schema.Attribute.UID<'name'>;
+    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     specialPerks: Schema.Attribute.Component<'shared.perks-list', true>;
     totalReview: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<2109>;
     updatedAt: Schema.Attribute.DateTime;
